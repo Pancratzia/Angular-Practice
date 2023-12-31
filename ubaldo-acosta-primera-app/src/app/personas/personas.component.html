@@ -3,7 +3,10 @@
         <div class="col">
             <h2>Listado de Personas</h2>
             <button class="btn btn-primary" [disabled] = "deshabilitar" (click)="agregarPersona()">Agregar Persona</button>
-            <p *ngIf="mostrar">{{mensaje}} con el título de: {{titulo}}</p>
+            <p *ngIf="mostrar; else sinPersona">{{mensaje}} con el título de: {{titulo}}</p>
+            <ng-template #sinPersona>
+                <p>No se ha agregado ninguna persona</p>
+            </ng-template>
             <ol>
                 <app-persona></app-persona>
             </ol>
