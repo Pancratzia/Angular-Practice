@@ -1,0 +1,21 @@
+<form>
+    <div class="row">
+      <div class="form-group col-6">
+        <label for="numberA">Número A:</label>
+        <input type="number" class="form-control" id="numberA" [(ngModel)]="numberA" name="numberA"
+          placeholder="Introduce el primer número">
+      </div>
+
+      <div class="form-group col-6">
+        <label for="numberB">Número B:</label>
+        <input type="number" class="form-control" id="numberB" [(ngModel)]="numberB" name="numberB"
+          placeholder="Introduce el segundo número">
+      </div>
+    </div>
+
+    <button type="button" class="btn btn-primary mt-5 mx-2" (click)="sumar()">Sumar</button>
+    <button type="button" class="btn btn-primary mt-5 mx-2" (click)="restar()">Restar</button>
+    <button type="button" class="btn btn-primary mt-5 mx-2" (click)="multiplicar()">Multiplicar</button>
+    <button type="button" class="btn btn-primary mt-5 mx-2" (click)="dividir()">Dividir</button>
+    <button type="button" class="btn btn-primary mt-5 mx-2" (click)="modulo()">Modúlo</button>
+  </form>

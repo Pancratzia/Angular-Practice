@@ -1,27 +1,7 @@
 <div class="container text-center my-5">
   <h1>{{ title }}</h1>
 
-  <form>
-    <div class="row">
-      <div class="form-group col-6">
-        <label for="numberA">Número A:</label>
-        <input type="number" class="form-control" id="numberA" [(ngModel)]="numberA" name="numberA"
-          placeholder="Introduce el primer número">
-      </div>
+  <app-formulario (resultMessage)="message = $event" (resultNumber)="result = $event"></app-formulario>
 
-      <div class="form-group col-6">
-        <label for="numberB">Número B:</label>
-        <input type="number" class="form-control" id="numberB" [(ngModel)]="numberB" name="numberB"
-          placeholder="Introduce el segundo número">
-      </div>
-    </div>
-
-    <button type="button" class="btn btn-primary mt-5 mx-2" (click)="sumar()">Sumar</button>
-    <button type="button" class="btn btn-primary mt-5 mx-2" (click)="restar()">Restar</button>
-    <button type="button" class="btn btn-primary mt-5 mx-2" (click)="multiplicar()">Multiplicar</button>
-    <button type="button" class="btn btn-primary mt-5 mx-2" (click)="dividir()">Dividir</button>
-    <button type="button" class="btn btn-primary mt-5 mx-2" (click)="modulo()">Modúlo</button>
-
-    <p class="mt-3 text-danger">Resultado: {{ message }} <span class="fw-bold">{{ result }}</span></p>
-  </form>
+  <p class="mt-3 text-danger">Resultado: {{ message }} <span class="fw-bold">{{ result }}</span></p>
 </div>
