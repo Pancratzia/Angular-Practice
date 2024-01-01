@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Persona } from './persona.model';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Listado de Personas';
+  personas: Persona [] = [
+    new Persona("Laura", "Ortega"),
+    new Persona ("Arthuro", "Dugarte"),
+    new Persona("Tiffany", "Ortega"),
+  ];
 }
