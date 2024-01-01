@@ -10,6 +10,4 @@ export class AppComponent {
   
   result: string = '0';
   message: string = '';
-
-
 }
