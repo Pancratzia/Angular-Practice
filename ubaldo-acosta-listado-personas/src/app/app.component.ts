@@ -10,10 +10,6 @@ export class AppComponent {
   title: string = 'Listado de Personas';
   personas: Persona [] = [];
 
-  borrar(i: number): void{ 
-    this.personas.splice(i,1);
-  }
-
   personaAgregada(persona: Persona): void{
     this.personas.push(persona);
   }

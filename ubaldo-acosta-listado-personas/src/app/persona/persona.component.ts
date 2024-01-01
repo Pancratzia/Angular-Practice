@@ -10,6 +10,5 @@ export class PersonaComponent {
 
   @Input() persona: Persona;
   @Input() indice: number;
-  @Input() borrar: Function;
 
 }
