@@ -7,10 +7,20 @@ import { Persona } from './persona.model';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Listado de Personas';
-  personas: Persona [] = [
-    new Persona("Laura", "Ortega"),
-    new Persona ("Arthuro", "Dugarte"),
-    new Persona("Tiffany", "Ortega"),
-  ];
+  title: string = 'Listado de Personas';
+  nombreInput: string= '';
+  apellidoInput: string='';
+
+  personas: Persona [] = [];
+
+  agregar(){
+    let newPersona = new Persona(this.nombreInput.toUpperCase(), this.apellidoInput.toUpperCase());
+    this.personas.push(newPersona);
+    this.limpiarInputs();
+  }
+
+  limpiarInputs() : void{
+    this.nombreInput = '';
+    this.apellidoInput = '';
+  }
 }
