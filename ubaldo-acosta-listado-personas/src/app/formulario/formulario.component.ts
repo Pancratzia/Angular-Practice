@@ -10,17 +10,17 @@ export class FormularioComponent {
 
   @Output() personaCreada = new EventEmitter<Persona>();
 
-  nombreInput: string= '';
-  apellidoInput: string='';
-  agregar(){
-    let newPersona = new Persona(this.nombreInput.toUpperCase(), this.apellidoInput.toUpperCase());
+  //nombreInput: string= '';
+  //apellidoInput: string='';
+  agregar(nombreInput: HTMLInputElement, apellidoInput: HTMLInputElement){
+    let newPersona = new Persona(nombreInput.value.toUpperCase(), apellidoInput.value.toUpperCase());
     this.personaCreada.emit(newPersona);
-    this.limpiarInputs();
+    this.limpiarInputs(nombreInput, apellidoInput);
   }
 
-  limpiarInputs() : void{
-    this.nombreInput = '';
-    this.apellidoInput = '';
+  limpiarInputs(nombreInput: HTMLInputElement, apellidoInput: HTMLInputElement) : void{
+    nombreInput.value = '';
+    apellidoInput.value = '';
   }
 
 }
