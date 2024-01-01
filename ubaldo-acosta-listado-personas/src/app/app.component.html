@@ -24,21 +24,21 @@
     </form>
 </div>
 
-<div class="container mt-5">
-    <div class="row">
-        <div class="col">
-            <div *ngIf="personas.length == 0; else elseBlock">
-                No hay personas
-            </div>
+<hr>
 
-            <ng-template #elseBlock>
-                <div class="" *ngFor="let persona of personas; let i = index">
-                    {{i+1}}- {{persona.nombre}} {{persona.apellido}}
-                    <button class="btn btn-danger me-2" style="font-size: 10px;" (click)="personas.splice(i, 1)">X</button>
-                </div>
-            </ng-template>
+<div *ngIf="personas.length === 0; else sinPersonas">
+    <p class="text-center">No hay personas registradas</p>
+</div>
 
+<ng-template #sinPersonas>
+
+    <div class="container mt-5">
+        <div class="row">
+
+            <app-persona *ngFor="let personaElemento of personas; let i = index" [persona]="personaElemento"
+                [indice]="i" (click)="borrar(i)"></app-persona>
 
         </div>
     </div>
-</div>
+
+</ng-template>

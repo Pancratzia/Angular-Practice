@@ -23,4 +23,8 @@ export class AppComponent {
     this.nombreInput = '';
     this.apellidoInput = '';
   }
+
+  borrar(i: number): void{ 
+    this.personas.splice(i,1);
+  }
 }
