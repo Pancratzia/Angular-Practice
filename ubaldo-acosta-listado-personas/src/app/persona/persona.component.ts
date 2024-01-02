@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
 import { Persona } from '../persona.model';
-import { LoggingService } from '../LoggingService.service';
 
 @Component({
   selector: 'app-persona',
@@ -9,17 +8,6 @@ import { LoggingService } from '../LoggingService.service';
 })
 export class PersonaComponent {
 
-  constructor(private loggingService: LoggingService){
-
-  }
-
   @Input() persona: Persona;
   @Input() indice: number;
-
-  onPersonaClickeada() : void{
-    this.loggingService.enviarMensajeAConsola('Has hecho click a la persona ' + (this.indice+1));
-  }
-
-
-
 }

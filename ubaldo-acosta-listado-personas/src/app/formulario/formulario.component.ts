@@ -1,6 +1,5 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Persona } from '../persona.model';
-import { LoggingService } from '../LoggingService.service';
 import { PersonasService } from '../personas.service';
 
 @Component({
@@ -18,10 +17,7 @@ export class FormularioComponent {
   @ViewChild('nombreRef') nombreInput : ElementRef;
   @ViewChild('apellidoRef') apellidoInput : ElementRef;
 
-  constructor(private loggingService: LoggingService,
-    private personaService: PersonasService){
-
-  }
+  constructor(private personaService: PersonasService){}
 
   agregar() : void {
     let newPersona = new Persona(this.nombreInput.nativeElement.value.toUpperCase(), this.apellidoInput.nativeElement.value.toUpperCase());
