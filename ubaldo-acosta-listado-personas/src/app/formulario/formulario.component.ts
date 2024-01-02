@@ -11,11 +11,8 @@ export class FormularioComponent {
 
   //@Output() personaCreada = new EventEmitter<Persona>();
 
-  //nombreInput: string= '';
-  //apellidoInput: string='';
-
-  @ViewChild('nombreRef') nombreInput : ElementRef;
-  @ViewChild('apellidoRef') apellidoInput : ElementRef;
+  nombreInput: string= '';
+  apellidoInput: string='';
 
   constructor(private personaService: PersonasService){
     this.personaService.saludar.subscribe(
@@ -24,7 +21,7 @@ export class FormularioComponent {
   }
 
   agregar() : void {
-    let newPersona = new Persona(this.nombreInput.nativeElement.value.toUpperCase(), this.apellidoInput.nativeElement.value.toUpperCase());
+    let newPersona = new Persona(this.nombreInput.toUpperCase(), this.apellidoInput.toUpperCase());
     //this.loggingService.enviarMensajeAConsola(`Persona creada: ${newPersona.nombre + ' ' + newPersona.apellido}`);
     //this.personaCreada.emit(newPersona);
 
@@ -33,8 +30,8 @@ export class FormularioComponent {
   }
 
   limpiarInputs() : void{
-    this.nombreInput.nativeElement.value = '';
-    this.apellidoInput.nativeElement.value = '';
+    this.nombreInput = '';
+    this.apellidoInput = '';
   }
 
 }
