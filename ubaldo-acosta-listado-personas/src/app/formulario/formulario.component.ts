@@ -17,7 +17,11 @@ export class FormularioComponent {
   @ViewChild('nombreRef') nombreInput : ElementRef;
   @ViewChild('apellidoRef') apellidoInput : ElementRef;
 
-  constructor(private personaService: PersonasService){}
+  constructor(private personaService: PersonasService){
+    this.personaService.saludar.subscribe(
+      (nombreCompleto:string) => alert(`¡Hola, ${nombreCompleto}!`)
+    )
+  }
 
   agregar() : void {
     let newPersona = new Persona(this.nombreInput.nativeElement.value.toUpperCase(), this.apellidoInput.nativeElement.value.toUpperCase());
