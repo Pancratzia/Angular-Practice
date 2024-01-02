@@ -1,6 +1,7 @@
-import { Component, ElementRef, EventEmitter, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Persona } from '../persona.model';
 import { LoggingService } from '../LoggingService.service';
+import { PersonasService } from '../personas.service';
 
 @Component({
   selector: 'app-formulario',
@@ -9,7 +10,7 @@ import { LoggingService } from '../LoggingService.service';
 })
 export class FormularioComponent {
 
-  @Output() personaCreada = new EventEmitter<Persona>();
+  //@Output() personaCreada = new EventEmitter<Persona>();
 
   //nombreInput: string= '';
   //apellidoInput: string='';
@@ -17,14 +18,17 @@ export class FormularioComponent {
   @ViewChild('nombreRef') nombreInput : ElementRef;
   @ViewChild('apellidoRef') apellidoInput : ElementRef;
 
-  constructor(private loggingService: LoggingService){
+  constructor(private loggingService: LoggingService,
+    private personaService: PersonasService){
 
   }
 
   agregar() : void {
     let newPersona = new Persona(this.nombreInput.nativeElement.value.toUpperCase(), this.apellidoInput.nativeElement.value.toUpperCase());
-    this.loggingService.enviarMensajeAConsola(`Persona creada: ${newPersona.nombre + ' ' + newPersona.apellido}`);
-    this.personaCreada.emit(newPersona);
+    //this.loggingService.enviarMensajeAConsola(`Persona creada: ${newPersona.nombre + ' ' + newPersona.apellido}`);
+    //this.personaCreada.emit(newPersona);
+
+    this.personaService.agregarPersona(newPersona);
     this.limpiarInputs();
   }
 
