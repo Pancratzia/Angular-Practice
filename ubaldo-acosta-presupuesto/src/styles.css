@@ -169,19 +169,19 @@ body {
 .agregar_btn:focus { outline: none; }
 
 .contenedor {
-    width: 1000px;
     margin: 60px auto;
+    width: min(1200px, 95%);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 50px;
 }
 
 .ingreso {
     float: left;
-    width: 475px;
-    margin-right: 50px;
 }
 
 .egreso {
     float: left;
-    width: 475px;
 }
 
 h2 {
