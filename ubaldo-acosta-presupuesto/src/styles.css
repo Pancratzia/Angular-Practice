@@ -176,14 +176,6 @@ body {
     gap: 50px;
 }
 
-.ingreso {
-    float: left;
-}
-
-.egreso {
-    float: left;
-}
-
 h2 {
     text-transform: uppercase;
     font-size: 18px;
