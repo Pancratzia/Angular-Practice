@@ -1,9 +1,9 @@
 <form>
     <div class="agregar">
         <div class="agregar_contenedor">
-            <select class="agregar_tipo">
-                <option value="ing" selected>+</option>
-                <option value="egr">-</option>
+            <select class="agregar_tipo" (change)="tipoOperacion($event)">
+                <option value="ingresoOperacion" selected>+</option>
+                <option value="egresoOperacion">-</option>
             </select>
             <input type="text" class="agregar_descripcion" placeholder="Agregar Descripción">
             <input type="number" class="agregar_valor" placeholder="Valor">

@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./formulario.component.css']
 })
 export class FormularioComponent {
+  tipo:string = "IngresoOperacion";
+
+  tipoOperacion(evento: Event){
+
+  }
 
 }
