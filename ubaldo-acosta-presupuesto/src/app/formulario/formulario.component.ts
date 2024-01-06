@@ -28,6 +28,9 @@ export class FormularioComponent {
       this.egresoServicio.egresos.push(new Egreso(this.descripcionInput, this.valorInput));
     }
 
+    this.descripcionInput = '';
+    this.valorInput = 0;
+
   }
 
 }
