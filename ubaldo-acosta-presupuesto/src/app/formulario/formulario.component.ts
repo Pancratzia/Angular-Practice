@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import { IngresoServicio } from '../ingreso/ingreso.service';
+import { EgresoServicio } from '../egreso/egreso.service';
+import { Egreso } from '../egreso/egreso.model';
+import { Ingreso } from '../ingreso/ingreso.model';
 
 @Component({
   selector: 'app-formulario',
@@ -6,9 +10,23 @@ import { Component } from '@angular/core';
   styleUrls: ['./formulario.component.css']
 })
 export class FormularioComponent {
-  tipo:string = "IngresoOperacion";
+  tipo:string = "ingresoOperacion";
+  descripcionInput: string;
+  valorInput:number;
 
-  tipoOperacion(evento: Event){
+  constructor(private ingresoServicio: IngresoServicio, private egresoServicio: EgresoServicio){}
+
+  tipoOperacion(event: any){
+      this.tipo = event.target.value;
+  }
+
+  agregarValor(){
+  
+    if(this.tipo === "ingresoOperacion"){
+      this.ingresoServicio.ingresos.push(new Ingreso(this.descripcionInput, this.valorInput));
+    }else{
+      this.egresoServicio.egresos.push(new Egreso(this.descripcionInput, this.valorInput));
+    }
 
   }
 
