@@ -7,6 +7,7 @@ import { PersonaComponent } from './persona/persona.component';
 import { FormularioComponent } from './formulario/formulario.component';
 import { LoggingService } from './LoggingService.service';
 import { PersonasService } from './personas.service';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { PersonasService } from './personas.service';
   ],
   imports: [
     BrowserModule,
-    FormsModule //Para usar Two-way binding
+    FormsModule, //Para usar Two-way binding
+    AppRoutingModule
   ],
   providers: [
     LoggingService,
