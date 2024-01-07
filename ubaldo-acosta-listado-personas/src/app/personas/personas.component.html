@@ -1,1 +1,17 @@
-<p>personas works!</p>
+<div class="box">
+
+    <div *ngIf="personas.length === 0; else sinPersonas">
+        <p>No hay personas registradas</p>
+    </div>
+
+    <ng-template #sinPersonas>
+
+        <app-persona *ngFor="let personaElemento of personas; let i = index" [persona]="personaElemento"
+            [indice]="i"></app-persona>
+
+    </ng-template>
+</div>
+
+<div class="box">
+    <app-formulario></app-formulario>
+</div>
