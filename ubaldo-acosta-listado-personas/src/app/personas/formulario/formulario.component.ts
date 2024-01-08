@@ -1,6 +1,7 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Persona } from '../../persona.model';
 import { PersonasService } from '../../personas.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-formulario',
@@ -14,24 +15,19 @@ export class FormularioComponent {
   nombreInput: string= '';
   apellidoInput: string='';
 
-  constructor(private personaService: PersonasService){
+  constructor(private personaService: PersonasService, private router:Router){
     this.personaService.saludar.subscribe(
       (nombreCompleto:string) => alert(`¡Hola, ${nombreCompleto}!`)
     )
   }
 
-  agregar() : void {
+  onGuardarPersona() : void {
     let newPersona = new Persona(this.nombreInput.toUpperCase(), this.apellidoInput.toUpperCase());
-    //this.loggingService.enviarMensajeAConsola(`Persona creada: ${newPersona.nombre + ' ' + newPersona.apellido}`);
-    //this.personaCreada.emit(newPersona);
-
     this.personaService.agregarPersona(newPersona);
-    this.limpiarInputs();
+    this.router.navigate(['/personas']);
+
   }
 
-  limpiarInputs() : void{
-    this.nombreInput = '';
-    this.apellidoInput = '';
-  }
+
 
 }
