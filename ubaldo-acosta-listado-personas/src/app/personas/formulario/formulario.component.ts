@@ -43,6 +43,8 @@ export class FormularioComponent implements OnInit {
 
   }
 
-
+  eliminarPersona(){
+    
+  }
 
 }
