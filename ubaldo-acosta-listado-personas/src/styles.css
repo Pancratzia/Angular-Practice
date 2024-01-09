@@ -67,6 +67,10 @@ button {
   margin: 10px 0;
 }
 
+.buttonRed{
+  background-color: red;
+}
+
 button:hover {
   cursor: pointer;
 }

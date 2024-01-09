@@ -44,7 +44,10 @@ export class FormularioComponent implements OnInit {
   }
 
   eliminarPersona(){
-    
+    if(this.index != null){
+      this.personaService.eliminarPersona(this.index);
+    }
+    this.router.navigate(['/personas']);
   }
 
 }
