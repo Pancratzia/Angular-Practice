@@ -8,7 +8,7 @@ export class Dataservices{
     constructor(private httpClient: HttpClient){}
 
     guardarPersonas(personas: Persona[]){
-        this.httpClient.post(environment.databaseLink + "datos.json", personas)
+        this.httpClient.put(environment.databaseLink + "datos.json", personas)
         .subscribe(
             response => console.log(response),
             error => console.log(error)
