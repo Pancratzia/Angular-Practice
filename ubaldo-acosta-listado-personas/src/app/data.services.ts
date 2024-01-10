@@ -9,7 +9,8 @@ export class Dataservices{
     constructor(private httpClient: HttpClient, private loginService: LoginService){}
 
     guardarPersonas(personas: Persona[]){
-        this.httpClient.put(environment.databaseLink + "datos.json", personas)
+        const token = this.loginService.getIdToken();
+        this.httpClient.put(environment.databaseLink + "datos.json?auth="+token, personas)
         .subscribe(
             response => console.log(response),
             error => console.log(error)
@@ -22,8 +23,9 @@ export class Dataservices{
     }
 
     modificarPersona(index:number, persona: Persona){
+        const token = this.loginService.getIdToken();
         let url: string;
-        url = environment.databaseLink + "/datos/" + index + ".json";
+        url = environment.databaseLink + "/datos/" + index + ".json?auth="+token;
         this.httpClient.put(url, persona)
         .subscribe(
             response => console.log(response),
@@ -32,8 +34,9 @@ export class Dataservices{
     }
 
     eliminarPersona(index:number){
+        const token = this.loginService.getIdToken();
         let url: string;
-        url = environment.databaseLink + "/datos/" + index + ".json";
+        url = environment.databaseLink + "/datos/" + index + ".json?auth="+token;
         this.httpClient.delete(url)
         .subscribe(
             response => console.log(response),
