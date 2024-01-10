@@ -24,4 +24,8 @@ export class LoginService {
   getIdToken(){
     return this.token;
   }
+
+  isAuth(){
+    return this.token !== (null || undefined);
+  }
 }
