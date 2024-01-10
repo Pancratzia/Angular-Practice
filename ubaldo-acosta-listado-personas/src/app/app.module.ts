@@ -11,6 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { PersonasComponent } from './personas/personas.component';
 import { ErrorComponent } from './error/error.component';
 import { Dataservices } from './data.services';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { Dataservices } from './data.services';
   imports: [
     BrowserModule,
     FormsModule, //Para usar Two-way binding
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [
     LoggingService,
