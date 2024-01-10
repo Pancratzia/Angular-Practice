@@ -28,4 +28,14 @@ export class Dataservices{
             error => console.log(error)
         )
     }
+
+    eliminarPersona(index:number){
+        let url: string;
+        url = environment.databaseLink + "/datos/" + index + ".json";
+        this.httpClient.delete(url)
+        .subscribe(
+            response => console.log(response),
+            error => console.log(error)
+        ) 
+    }
 }
