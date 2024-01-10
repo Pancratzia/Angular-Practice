@@ -18,4 +18,14 @@ export class Dataservices{
     cargarPersonas(){
         return this.httpClient.get(environment.databaseLink + "datos.json")
     }
+
+    modificarPersona(index:number, persona: Persona){
+        let url: string;
+        url = environment.databaseLink + "/datos/" + index + ".json";
+        this.httpClient.put(url, persona)
+        .subscribe(
+            response => console.log(response),
+            error => console.log(error)
+        )
+    }
 }
