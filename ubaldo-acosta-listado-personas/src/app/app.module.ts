@@ -18,6 +18,7 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 
 import { environment } from '../environments/environment';
 import { LoginService } from './login/login.service';
+import { LoginGuardian } from './login/login-guardian.service';
 
 
 
@@ -42,7 +43,8 @@ import { LoginService } from './login/login.service';
     LoggingService,
     PersonasService,
     Dataservices,
-    LoginService
+    LoginService,
+    LoginGuardian
   ],
   bootstrap: [AppComponent]
 })
