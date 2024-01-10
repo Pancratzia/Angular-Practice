@@ -10,6 +10,7 @@ import { PersonasService } from './personas.service';
 import { AppRoutingModule } from './app-routing.module';
 import { PersonasComponent } from './personas/personas.component';
 import { ErrorComponent } from './error/error.component';
+import { Dataservices } from './data.services';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ErrorComponent } from './error/error.component';
   ],
   providers: [
     LoggingService,
-    PersonasService
+    PersonasService,
+    Dataservices
   ],
   bootstrap: [AppComponent]
 })
