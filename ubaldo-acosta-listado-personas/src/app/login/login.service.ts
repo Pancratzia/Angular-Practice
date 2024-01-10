@@ -26,6 +26,15 @@ export class LoginService {
   }
 
   isAuth(){
-    return this.token !== (null || undefined);
+
+    if(this.token !== null && this.token !== undefined) return true;
+    return false;
+  }
+
+  logout(){
+    this.auth.signOut().then(()=>{
+      this.token = null;
+      this.router.navigate(['login']);
+    }).catch(error=>console.log(error));
   }
 }
