@@ -14,4 +14,8 @@ export class Dataservices{
             error => console.log(error)
         );
     }
+
+    cargarPersonas(){
+        return this.httpClient.get(environment.databaseLink + "datos.json")
+    }
 }

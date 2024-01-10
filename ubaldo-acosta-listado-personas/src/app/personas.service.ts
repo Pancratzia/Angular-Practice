@@ -12,10 +12,21 @@ export class PersonasService {
   constructor(private loggingService: LoggingService,
     private dataServices: Dataservices) {}
 
+  setPersonas(personas: Persona[]){
+    this.personas = personas;
+  } 
+
+  obtenerPersonas(){
+    return this.dataServices.cargarPersonas();
+  }
+
   agregarPersona(persona: Persona) {
     this.loggingService.enviarMensajeAConsola(
       `La persona ${persona.nombre} ${persona.apellido} ha sido agregada al arreglo de personas`
     );
+    if(this.personas ===null){
+      this.personas = [];
+    }
     this.personas.push(persona);
     this.dataServices.guardarPersonas(this.personas);
   }
