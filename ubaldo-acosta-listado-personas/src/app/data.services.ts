@@ -2,10 +2,11 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Persona } from './persona.model';
 import { environment } from 'src/environments/environment.development';
+import { LoginService } from './login/login.service';
 
 @Injectable()
 export class Dataservices{
-    constructor(private httpClient: HttpClient){}
+    constructor(private httpClient: HttpClient, private loginService: LoginService){}
 
     guardarPersonas(personas: Persona[]){
         this.httpClient.put(environment.databaseLink + "datos.json", personas)
@@ -16,7 +17,8 @@ export class Dataservices{
     }
 
     cargarPersonas(){
-        return this.httpClient.get(environment.databaseLink + "datos.json")
+        const token = this.loginService.getIdToken();
+        return this.httpClient.get(environment.databaseLink + "datos.json?auth="+token)
     }
 
     modificarPersona(index:number, persona: Persona){
