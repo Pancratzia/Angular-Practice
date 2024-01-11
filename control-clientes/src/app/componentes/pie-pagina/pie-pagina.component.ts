@@ -7,4 +7,6 @@ import { Component } from '@angular/core';
 })
 export class PiePaginaComponent {
 
+  anio = new Date().getFullYear();
+
 }
