@@ -61,7 +61,7 @@ export class ClientesComponent implements OnInit {
         }
       );
     } else {
-      //Agregar el nuevo cliente
+      this.clienteServicio.agregarCliente(value);
     }
   }
 }
