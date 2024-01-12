@@ -20,6 +20,13 @@ export class ClientesComponent implements OnInit {
     );
   }
 
+  getTotalClientes(): number{
+    if(this.clientes){
+      return this.clientes.length;
+    }
+    return 0;
+  }
+
   getSaldoTotal(): number{
     let saldoTotal: number = 0;
     if(this.clientes){
