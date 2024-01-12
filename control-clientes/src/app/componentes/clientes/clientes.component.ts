@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { AlertMessagesService } from 'jjwins-angular-alert-messages';
 import { Cliente } from 'src/app/modelos/cliente.model';
 import { ClienteServicio } from 'src/app/servicios/cliente.service';
 
@@ -11,8 +13,14 @@ import { ClienteServicio } from 'src/app/servicios/cliente.service';
 export class ClientesComponent implements OnInit {
 
   clientes: Cliente[];
+  cliente : Cliente = {
+    nombre: '',
+    apellido: '',
+    email: '',
+    saldo: 0
+  }
 
-  constructor(private clienteServicio : ClienteServicio) { }
+  constructor(private clienteServicio : ClienteServicio, private alertMessages : AlertMessagesService) { }
 
   ngOnInit(): void {
     this.clienteServicio.getClientes().subscribe(
@@ -35,6 +43,21 @@ export class ClientesComponent implements OnInit {
       });
     }
     return saldoTotal;
+  }
+
+  agregar(form : NgForm): void{
+    
+    let [value, valid] = [form.value, form.valid];
+    if(!valid){
+
+      this.alertMessages.show('Por favor, rellena el formulario correctamente', {
+        cssClass: 'alert-danger text-center d-flex justify-content-between m-1',
+        timeOut: 3000
+      })
+    }else{
+      //Agregar el nuevo cliente
+    }
+
   }
 
 }
