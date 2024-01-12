@@ -81,35 +81,68 @@
 
       <jjwins-alert-messages></jjwins-alert-messages>
 
-      <form  #clienteForm="ngForm" (ngSubmit)="agregar(clienteForm)">
+      <form #clienteForm="ngForm" (ngSubmit)="agregar(clienteForm)">
         <div class="modal-body">
           <div class="form-group">
             <label for="nombre">Nombre</label>
-            <input type="text" name="nombre" id="nombre" class="form-control" #nombre="ngModel" [(ngModel)] ="cliente.nombre" [ngClass]="{'is-invalid': nombre.errors && nombre.touched }" required minlength="2" />
-            
-           <div class="invalid-feedback" [hidden]="clienteForm.controls['nombre'].errors?.['required']">
-             El nombre es requerido
-           </div>
+            <input type="text" name="nombre" id="nombre" class="form-control" #nombre="ngModel" [(ngModel)]="cliente.nombre" [ngClass]="{'is-invalid': nombre.errors && nombre.touched }" required minlength="2" />
 
-           <div class="invalid-feedback" [hidden]="clienteForm.controls['nombre'].errors?.['minlength']">
-             El nombre debe tener al menos 2 carácteres
-           </div>
-            
+
+            <div class="invalid-feedback" *ngIf="clienteForm.controls['nombre'].hasError('required')">
+              El nombre es requerido
+            </div>
+
+            <div class="invalid-feedback" *ngIf="clienteForm.controls['nombre'].hasError('minlength')">
+              El nombre debe tener al menos 2 caracteres
+            </div>
+
           </div>
 
           <div class="form-group">
             <label for="apellido">Apellido</label>
-            <input type="text" name="apellido" id="apellido" class="form-control">
+            <input type="text" name="apellido" id="apellido" class="form-control" #apellido="ngModel" [(ngModel)]="cliente.apellido" [ngClass]="{'is-invalid': apellido.errors && apellido.touched }" required minlength="2">
+
+
+            <div class="invalid-feedback" *ngIf="clienteForm.controls['apellido'].hasError('required')">
+              El apellido es requerido
+            </div>
+
+            <div class="invalid-feedback" *ngIf="clienteForm.controls['apellido'].hasError('minlength')">
+              El apellido debe tener al menos 2 caracteres
+            </div>
+
           </div>
 
           <div class="form-group">
             <label for="email">Email</label>
-            <input type="email" name="email" id="email" class="form-control">
+            <input type="email" name="email" id="email" class="form-control" #email="ngModel"
+              [(ngModel)]="cliente.email" [ngClass]="{'is-invalid': email.errors && email.touched }" required pattern="^\w+(\.-?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
+
+
+            <div class="invalid-feedback" *ngIf="clienteForm.controls['email'].hasError('required')">
+              El email es requerido
+            </div>
+
+            <div class="invalid-feedback" *ngIf="clienteForm.controls['email'].hasError('pattern')">
+              El email no es valido
+            </div>
+
           </div>
 
           <div class="form-group">
             <label for="saldo">Saldo</label>
-            <input type="number" name="saldo" id="saldo" class="form-control">
+            <input type="number" name="saldo" id="saldo" class="form-control" #saldo="ngModel"
+              [(ngModel)]="cliente.saldo" [ngClass]="{'is-invalid': saldo.errors && saldo.touched }" min="0" required>
+
+
+            <div class="invalid-feedback" *ngIf="clienteForm.controls['saldo'].hasError('required')">
+              El saldo es requerido
+            </div>
+
+            <div class="invalid-feedback" *ngIf="clienteForm.controls['saldo'].hasError('min')">
+              El saldo no puede ser negativo
+            </div>
+
           </div>
         </div>
 
