@@ -37,10 +37,31 @@ export class EditarClienteComponent implements OnInit {
     })
   }
 
-  guardar(cliente : NgForm){
+  guardar(form : NgForm){
+
+    const {value, valid} = form;
+    if(!valid) {
+      this.alertMessages.show(
+        'Por favor, rellena el formulario correctamente',
+        {
+          cssClass:
+            'alert-danger text-center d-flex justify-content-between m-1',
+          timeOut: 3000,
+        }
+      );
+    } else {
+      value.id = this.id;
+      this.clienteServicio.modificarCliente(value);
+      this.router.navigate(['/']);
+    }
 
   }
 
-  eliminar(){}
+  eliminar(){
+    if(confirm('¿Estás seguro de eliminar este cliente?')){
+      this.clienteServicio.eliminarCliente(this.cliente);
+      this.router.navigate(['/']);
+    }
+  }
 
 }
