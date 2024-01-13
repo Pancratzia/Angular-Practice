@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlertMessagesService } from 'jjwins-angular-alert-messages';
 import { Cliente } from 'src/app/modelos/cliente.model';
@@ -35,5 +36,11 @@ export class EditarClienteComponent implements OnInit {
       }
     })
   }
+
+  guardar(cliente : NgForm){
+
+  }
+
+  eliminar(){}
 
 }
