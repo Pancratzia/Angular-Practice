@@ -29,6 +29,11 @@ export class EditarClienteComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
+    this.clienteServicio.getcliente(this.id).subscribe((cliente) => {
+      if (cliente) {
+        this.cliente = cliente;
+      }
+    })
   }
 
 }
