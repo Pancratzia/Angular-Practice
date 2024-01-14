@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-configuracion',
@@ -7,8 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ConfiguracionComponent implements OnInit {
 
+  permitirRegistro : boolean = false;
 
-  constructor() { }
+  constructor(private router : Router) { }
 
   ngOnInit(): void {
     throw new Error('Method not implemented.');
