@@ -21,6 +21,7 @@ import { ConfiguracionComponent } from './componentes/configuracion/configuracio
 import { NoEncontradoComponent } from './componentes/no-encontrado/no-encontrado.component';
 import { PiePaginaComponent } from './componentes/pie-pagina/pie-pagina.component';
 import { ClienteServicio } from './servicios/cliente.service';
+import { LoginService } from './servicios/login.service';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { ClienteServicio } from './servicios/cliente.service';
     AlertMessagesModule
   ],
   providers: [
-    ClienteServicio
+    ClienteServicio, 
+    LoginService
   ],
   bootstrap: [AppComponent]
 })
