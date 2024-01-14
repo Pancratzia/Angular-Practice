@@ -13,13 +13,25 @@ export class LoginComponent implements OnInit {
   email: string;
   password: string;
 
-  constructor( private router: Router, private alertMessages: AlertMessagesService, loginService : LoginService  ) { }
+  constructor( private router: Router, private alertMessages: AlertMessagesService, private  loginService : LoginService  ) { }
 
   ngOnInit(): void {
     throw new Error('Method not implemented.');
   }
 
 
-  login(){}
+  login(){
+    this.loginService.login(this.email, this.password)
+    .then((res) => {
+      this.router.navigate(['/']);
+    })
+    .catch((error) => {
+      console.log(error);
+      this.alertMessages.show("Email o contraseña incorrectos", {
+        cssClass: 'alert-danger text-center d-flex justify-content-between m-1',
+        timeOut: 3000
+      })
+    })
+  }
 
 }
