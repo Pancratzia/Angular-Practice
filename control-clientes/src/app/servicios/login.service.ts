@@ -19,4 +19,8 @@ export class LoginService {
             map(auth => auth)
         );
     }
+
+    logout(){
+        this.authService.signOut();
+    }
 }

@@ -12,7 +12,7 @@ export class CabeceroComponent implements OnInit {
   isLoggedIn: boolean;
   loggedInUser: string | null;
 
-  constructor(private loginService : LoginService, privateRouter : Router) { }
+  constructor(private loginService : LoginService, private router : Router) { }
 
   ngOnInit(): void {
     this.loginService.getAuth().subscribe( auth => {
@@ -23,6 +23,12 @@ export class CabeceroComponent implements OnInit {
         this.isLoggedIn = false;
       }
     })
+  }
+
+  logout(){
+    this.loginService.logout();
+    this.isLoggedIn = false;
+    this.router.navigate(['/login']);
   }
 
 }
