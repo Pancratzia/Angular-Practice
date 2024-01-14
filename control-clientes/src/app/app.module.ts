@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { environment } from 'src/environments/environment.development';
 import { AngularFireModule } from '@angular/fire/compat';
-import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFirestoreModule, SETTINGS } from '@angular/fire/compat/firestore';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { Settings } from '@angular/fire/compat/firestore';
 import { AlertMessagesModule } from 'jjwins-angular-alert-messages';
@@ -23,6 +23,7 @@ import { PiePaginaComponent } from './componentes/pie-pagina/pie-pagina.componen
 import { ClienteServicio } from './servicios/cliente.service';
 import { LoginService } from './servicios/login.service';
 import { AuthGuard } from './guardianes/auth.guard';
+import { ConfiguracionServicio } from './servicios/configuracion.service';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,9 @@ import { AuthGuard } from './guardianes/auth.guard';
   providers: [
     ClienteServicio, 
     LoginService,
-    AuthGuard
+    AuthGuard,
+    ConfiguracionServicio,
+    { provide: SETTINGS, useValue: {} }
   ],
   bootstrap: [AppComponent]
 })
