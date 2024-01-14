@@ -13,7 +13,7 @@ export class RegistroComponent implements OnInit {
   email: string;
   password: string;
 
-  constructor(private router : Router, private alerMessages : AlertMessagesService, private loginService : LoginService) { }
+  constructor(private router : Router, private alertMessages : AlertMessagesService, private loginService : LoginService) { }
 
   ngOnInit(): void {
     this.loginService.getAuth().subscribe( auth => {
@@ -24,7 +24,17 @@ export class RegistroComponent implements OnInit {
   }
 
   registro(){
-    
+    this.loginService.registrarse(this.email, this.password)
+    .then( (res) => {
+      this.router.navigate(['/']);
+    })
+    .catch( (err) => {
+      console.log(err);
+      this.alertMessages.show("Error al registrar el usuario", {
+        cssClass: 'alert-danger text-center d-flex justify-content-between m-1',
+        timeOut: 3000
+      })
+    })
   }
 
 }
