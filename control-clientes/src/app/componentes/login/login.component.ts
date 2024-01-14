@@ -16,7 +16,11 @@ export class LoginComponent implements OnInit {
   constructor( private router: Router, private alertMessages: AlertMessagesService, private  loginService : LoginService  ) { }
 
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    this.loginService.getAuth().subscribe( auth => {
+      if(auth){
+        this.router.navigate(['/']);
+      }
+    })
   }
 
 
